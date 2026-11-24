@@ -1,28 +1,27 @@
-3Hachi6 Electronics サイト 編集メモ
-=====================================
+3Hachi6 Electronics サイト 編集メモ(更新版)
+=============================================
 
-■ フォルダの中身
-  index.html        トップページ
-  style.css         色・大きさ・レイアウト(見た目はここ)
-  script.js         作品集の横スクロール用(触らなくてOK)
-  devices/          デバイスごとのページ(f100.html, p100.html ...)
-  images/           画像
-  fonts/            見出し用フォント
+■ 全ページ共通の部分は shared.js 1か所で直す
+  ヘッダー / お問い合わせ / フッター / 「前へ・次へ」は、すべて shared.js が各ページに入れています。
+  shared.js の先頭にある「設定」を書き換えるだけで、全ページに反映されます。
 
-■ よくある編集
-  文章を変える      該当の .html をメモ帳/VS Codeで開いて、日本語の部分を書き換える
-  画像を差し替える  images/ の中の同じ名前のファイルを上書き(例: images/p100.png)
-  色を変える        style.css の先頭の「色・サイズ」の値を書き換える
-  デバイスを足す    devices/p100.html をコピーして名前を変え、中身を書き換える。
-                    index.html のデバイス一覧にも <article> のかたまりを追加する
-  メールアドレス    「hello@example.com」を全ファイルで検索して置換
-                    (VS Codeなら Ctrl+Shift+H で全ファイルまとめて置換できます)
+    SITE.email                    メールアドレス
+    SITE.contactCatch / contactText  お問い合わせのキャッチコピーと説明文
+    SITE.footerNote / copyright   フッターの文章
+    SITE.github / x               フッターのリンク先
+    SITE.showGithubButton         お問い合わせに GitHub ボタンを出す(true / false)
+    SITE.showContactLinkInFooter  フッターに「お問い合わせ」リンクを出す(true / false)
+    DEVICES                       デバイス一覧(フッター・前へ/次へ に反映。増やすときは1行足す)
 
-■ 確認のしかた
-  index.html をダブルクリックすれば、ブラウザでそのまま開けます。
+■ 各ページ個別の部分(HTMLを直接編集)
+  index.html            トップ(F100の見出し、デバイスのタイル、作品集)
+  devices/xxx.html      デバイスごとの概要・特長・仕様
+  ※ F100のキャッチコピーは index.html と devices/f100.html の2か所にあります。
+
+■ 画像
+  images/ の中に入れます。名前は「すべて小文字」にしてください
+  (GitHub / Cloudflare では p100.jpg と P100.jpg は別のファイル扱いです)。
 
 ■ 注意
-  ヘッダー・お問い合わせ・フッターは各ページに同じものが書いてあります。
-  変更したいときは全ページ分(6ファイル)を直してください。
-  images/ の dial.png / orbit.png / keys-split.png / tone-mini.png は、
-  今のページでは使っていません(不要なら削除してOK)。
+  ・ブラウザで JavaScript が無効だと、共通パーツは表示されません(通常の利用では問題なし)。
+  ・index.html をダブルクリックで開いても、そのまま確認できます。
