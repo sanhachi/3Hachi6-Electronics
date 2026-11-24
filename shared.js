@@ -14,7 +14,7 @@ var SITE = {
 
   // フッター「つながる」のリンク先
   github: 'https://github.com/sanhachi',
-  x: 'https://x.com/385electronics',
+  x: 'https://x.com/386electronics',
 
   // お問い合わせブロックに「GitHubでソースを見る」ボタンを出すか(true / false)
   showGithubButton: false,
