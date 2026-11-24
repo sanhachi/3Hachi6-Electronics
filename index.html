@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3Hachi6 Electronics — 自作デバイス・ポートフォリオ</title>
+  <meta name="description" content="設計から基板、筐体、ファームウェアまで。ひとりの手でつくられたハードウェアのコレクション。">
+  <meta name="theme-color" content="#f4f7f7">
+  <link rel="icon" href="images/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/apple-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== ヘッダー(全ページ共通) ===== -->
+  <header class="site-header">
+    <nav class="site-nav" aria-label="メインナビゲーション">
+      <a href="index.html" class="site-logo">
+        <img src="images/logo.png" alt="3Hachi6 Electronics" width="1920" height="720">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#devices">デバイス</a></li>
+        <li><a href="index.html#works">作品集</a></li>
+        <li><a href="index.html#contact">お問い合わせ</a></li>
+      </ul>
+      <a href="#contact" class="nav-contact">連絡する</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===== トップの大きな見出し(注目のデバイス:F100) ===== -->
+    <section id="f100" class="hero" aria-labelledby="hero-title">
+      <div class="container-md">
+        <p class="hero-label"><span aria-hidden="true"></span>FEATURED PROJECT<span aria-hidden="true"></span></p>
+        <h1 id="hero-title">LESS TO SEE, MORE TO HEAR.</h1>
+        <p class="hero-name">
+          <span class="font-display">F100</span>
+          <span class="status-badge">開発中</span>
+        </p>
+        <div class="hero-buttons">
+          <a href="devices/f100.html" class="btn btn-primary">仕様を見る →</a>
+          <a href="#devices" class="btn btn-ghost">ほかのデバイス</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="images/f100.png" alt="黒背景に置かれた、マットブラックの小型音楽プレーヤー">
+      </div>
+      <div class="hero-bar" aria-hidden="true"></div>
+    </section>
+
+    <!-- ===== デバイス一覧 =====
+         デバイスを増やすときは、下の <article> のかたまりを丸ごとコピーして書き換えます。 -->
+    <section id="devices" class="section-devices" aria-labelledby="devices-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">DEVICES</p>
+            <h2 id="devices-title">デバイス一覧</h2>
+          </div>
+          <p class="section-note">開発中のプロジェクトを含む、4つのデバイス。</p>
+        </div>
+        <div class="tile-grid">
+
+          <!-- ---------- P100 ---------- -->
+          <article id="p100" class="tile tile-dark" aria-labelledby="p100-title">
+            <div class="tile-top">
+              <span class="tile-no">01</span>
+              <span class="tile-cat">ポケットベル</span>
+            </div>
+            <div class="tile-body">
+              <h3 id="p100-title">P100</h3>
+              <p class="tile-tagline">短いことばを、ポケットに。</p>
+              <p class="tile-desc">Seeed Studio XIAO ESP32C3を搭載した小さなポケットベル。必要なメッセージだけを、静かに受け取ります。</p>
+              <div class="tile-actions">
+                <span class="status-chip">試験量産検討中</span>
+                <a href="devices/p100.html" class="tile-link">仕様を見る<span class="sr-only">（P100）</span> ↗</a>
+              </div>
+            </div>
+            <div class="tile-image">
+              <img src="images/p100.png" alt="小さなモノクロ液晶を備えたダークグレーのポケットベル" loading="lazy">
+            </div>
+            <div class="tile-bar" aria-hidden="true"></div>
+          </article>
+
+          <!-- ---------- D100 ---------- -->
+          <article id="d100" class="tile tile-light" aria-labelledby="d100-title">
+            <div class="tile-top">
+              <span class="tile-no">02</span>
+              <span class="tile-cat">PDA</span>
+            </div>
+            <div class="tile-body">
+              <h3 id="d100-title">D100</h3>
+              <p class="tile-tagline">手のひらに、もうひとつの机を。</p>
+              <p class="tile-desc">ESP32-32Eと3.5インチディスプレイを組み合わせた携帯情報端末。予定もメモも、これひとつで。</p>
+              <div class="tile-actions">
+                <span class="status-chip">開発中</span>
+                <a href="devices/d100.html" class="tile-link">仕様を見る<span class="sr-only">（D100）</span> ↗</a>
+              </div>
+            </div>
+            <div class="tile-image">
+              <img src="images/d100.png" alt="3.5インチのカラータッチスクリーンを備えたライトグレーのPDA" loading="lazy">
+            </div>
+            <div class="tile-bar" aria-hidden="true"></div>
+          </article>
+
+          <!-- ---------- W100 ---------- -->
+          <article id="w100" class="tile tile-dark" aria-labelledby="w100-title">
+            <div class="tile-top">
+              <span class="tile-no">03</span>
+              <span class="tile-cat">ウェアラブル端末</span>
+            </div>
+            <div class="tile-body">
+              <h3 id="w100-title">W100</h3>
+              <p class="tile-tagline">腕に、コンピューターを。</p>
+              <p class="tile-desc">D100と同じ筐体に、前腕へしっかり固定できる大きなバンドを搭載。両手を空けたまま操作できます。</p>
+              <div class="tile-actions">
+                <span class="status-chip">ほぼ完成</span>
+                <a href="devices/w100.html" class="tile-link">仕様を見る<span class="sr-only">（W100）</span> ↗</a>
+              </div>
+            </div>
+            <div class="tile-image">
+              <img src="images/w100.png" alt="幅広の黒いバンドで前腕に装着するディスプレイ付きウェアラブル端末" loading="lazy">
+            </div>
+            <div class="tile-bar" aria-hidden="true"></div>
+          </article>
+
+          <!-- ---------- C100 ---------- -->
+          <article id="c100" class="tile tile-light" aria-labelledby="c100-title">
+            <div class="tile-top">
+              <span class="tile-no">04</span>
+              <span class="tile-cat">パーソナルコンピューター</span>
+            </div>
+            <div class="tile-body">
+              <h3 id="c100-title">C100</h3>
+              <p class="tile-tagline">はじめての、x86。</p>
+              <p class="tile-desc">3Hachi6初のx86アーキテクチャPC。現在は構想段階で、筐体と構成を検討しています。</p>
+              <div class="tile-actions">
+                <span class="status-chip">構想段階</span>
+                <a href="devices/c100.html" class="tile-link">仕様を見る<span class="sr-only">（C100）</span> ↗</a>
+              </div>
+            </div>
+            <div class="tile-image">
+              <img src="images/c100.png" alt="シルバーのアルミ筐体を持つ小型デスクトップPCのコンセプトモデル" loading="lazy">
+            </div>
+            <div class="tile-bar" aria-hidden="true"></div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 作品集(横に流れるカード) =====
+         作品を増やすときは、<li class="work-card"> のかたまりをコピーして追加します。
+         (ループ表示用の複製は script.js が自動で作るので、ここは1セットだけでOK) -->
+    <section id="works" class="section-works" aria-labelledby="works-title">
+      <div class="container-md">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">OTHER WORKS</p>
+            <h2 id="works-title">小さな作品たち。</h2>
+          </div>
+          <p class="section-note">これまでにつくってきたものを、ざっくりと。</p>
+        </div>
+      </div>
+      <div class="marquee">
+        <div class="marquee-track">
+          <ul class="work-list">
+
+            <li class="work-card">
+              <div class="work-meta"><span class="work-cat">キーパッド</span><span>2024</span></div>
+              <h3>Macro Pad 9</h3>
+              <p>3×3キーとロータリーエンコーダー。配信や動画編集のショートカット用に。</p>
+            </li>
+
+            <li class="work-card">
+              <div class="work-meta"><span class="work-cat">時計</span><span>2024</span></div>
+              <h3>Matrix Clock</h3>
+              <p>8×32のLEDマトリクスで時刻と天気をスクロール表示。NTPで自動補正。</p>
+            </li>
+
+            <li class="work-card">
+              <div class="work-meta"><span class="work-cat">IoT</span><span>2025</span></div>
+              <h3>Leaf Monitor</h3>
+              <p>観葉植物の土壌水分を測って、水やりのタイミングをスマホに通知。</p>
+            </li>
+
+            <li class="work-card">
+              <div class="work-meta"><span class="work-cat">USBハブ</span><span>2023</span></div>
+              <h3>Pocket Hub</h3>
+              <p>名刺サイズの4ポートUSBハブ。むき出し基板を透明アクリルで挟んだ構造。</p>
+            </li>
+
+            <li class="work-card">
+              <div class="work-meta"><span class="work-cat">照明</span><span>2025</span></div>
+              <h3>Desk Lamp R1</h3>
+              <p>色温度と明るさを無段階で調整できるデスクライト。タッチ操作対応。</p>
+            </li>
+
+            <li class="work-card">
+              <div class="work-meta"><span class="work-cat">リモコン</span><span>2023</span></div>
+              <h3>BLE Remote</h3>
+              <p>スライド送り用の小さなBluetoothリモコン。CR2032で約1年動作。</p>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== お問い合わせ(全ページ共通) ===== -->
+    <section id="contact" class="section-contact" aria-labelledby="contact-title">
+      <div class="container-sm">
+        <p class="eyebrow">CONTACT</p>
+        <h2 id="contact-title">次のデバイスを、<br>一緒につくりませんか。</h2>
+        <p class="contact-text">共同開発、試作の依頼、展示や取材のご相談など、お気軽にご連絡ください。</p>
+        <div class="contact-buttons">
+          <!-- ▼ メールアドレスはここ(hello@example.com を自分のものに) -->
+          <a href="mailto:hello@example.com" class="btn btn-primary btn-lg">メールで連絡する</a>
+          <!-- ▼ GitHubのURLはここ -->
+          <a href="https://github.com" class="btn btn-ghost-ink btn-lg">GitHubでソースを見る ›</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== フッター(全ページ共通) ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-note">掲載しているデバイスはすべて個人による自作品であり、一般販売は行っていません。仕様は開発中のものを含み、予告なく変更される場合があります。</p>
+      <nav class="footer-nav" aria-label="フッター">
+        <div>
+          <h3>デバイス</h3>
+          <ul>
+            <li><a href="devices/f100.html">F100</a></li>
+            <li><a href="devices/p100.html">P100</a></li>
+            <li><a href="devices/d100.html">D100</a></li>
+            <li><a href="devices/w100.html">W100</a></li>
+            <li><a href="devices/c100.html">C100</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>ラボについて</h3>
+          <ul>
+            <li><a href="index.html#devices">デバイス一覧</a></li>
+            <li><a href="index.html#works">作品集</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>つながる</h3>
+          <ul>
+            <li><a href="https://github.com">GitHub</a></li>
+            <li><a href="https://x.com">X</a></li>
+            <li><a href="index.html#contact">お問い合わせ</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="footer-bottom">
+        <p>Copyright © 2026 3Hachi6 Electronics. All rights reserved.</p>
+        <p>Made by hand in Japan</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
