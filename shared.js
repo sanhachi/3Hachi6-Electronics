@@ -17,9 +17,9 @@ var SITE = {
   x: 'https://x.com/386electronics',
 
   // お問い合わせブロックに「GitHubでソースを見る」ボタンを出すか(true / false)
-  showGithubButton: false,
+  showGithubButton: true,
   // フッター「つながる」に「お問い合わせ」リンクを出すか(true / false)
-  showContactLinkInFooter: false,
+  showContactLinkInFooter: true,
 
   // お問い合わせブロックのキャッチコピー(改行は <br>)
   contactCatch: '次のデバイスを、<br>一緒につくりませんか。',
