@@ -1,61 +1,279 @@
-// 作品集の横スクロールを「途切れず無限にループ」させるためのスクリプトです。
-// 作品の数と画面の幅に合わせて、リストを必要なだけ複製してつなげます。
-// 画像つきカードは、タップ・クリックでめくれるようにもします。
+/* =========================================================
+   shared.js ― ページの組み立て(通常は触らなくてOK)
+
+   data.js に書いた中身を、各ページに表示します。
+     ・ヘッダー / お問い合わせ / フッター / 前へ・次へ
+     ・デバイスのタイル(トップ・デバイス一覧)
+     ・作品のカード(トップ・デバイス一覧)
+     ・各デバイスのページの本文
+   ========================================================= */
 (function () {
-  var SPEED = 45;     // 流れる速さ(px/秒)。大きいほど速い
-  var MIN_ITEMS = 3;  // 作品がこれより少ないときは、流さずに並べるだけにする
+  var body = document.body;
+  var root = body.getAttribute('data-root') || '';      // トップなら '' / devices内なら '../'
+  var current = body.getAttribute('data-device') || ''; // デバイスページなら、そのslug
+  var home = root + 'index.html';
+  var devDir = root ? '' : 'devices/';
+  var devIndex = devDir + 'index.html';                 // デバイス一覧ページ
 
-  // タップ・クリックでめくる/戻す(スマホ用。PCはホバーでも開く)
-  document.addEventListener('click', function (e) {
-    var card = e.target.closest && e.target.closest('.work-card.has-image');
-    document.querySelectorAll('.work-card.is-open').forEach(function (c) {
-      if (c !== card) c.classList.remove('is-open');
-    });
-    if (card) card.classList.toggle('is-open');
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter' || e.key === ' ') {
-      var card = e.target.closest && e.target.closest('.work-card.has-image');
-      if (card && e.target === card) { e.preventDefault(); card.classList.toggle('is-open'); }
+  function byId(id) { return document.getElementById(id); }
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function findDevice(slug) {
+    for (var i = 0; i < DEVICES.length; i++) if (DEVICES[i].slug === slug) return DEVICES[i];
+    return null;
+  }
+  function devHref(slug) { return devDir + slug + '.html'; }
+
+  /* ----- パーツ:デバイスのタイル ----- */
+  function tileHTML(d) {
+    var theme = d.theme === 'dark' ? 'tile-dark' : 'tile-light';
+    return `
+          <article id="${esc(d.slug)}" class="tile ${theme}" aria-labelledby="${esc(d.slug)}-title">
+            <div class="tile-top">
+              <span class="tile-date">${esc(d.date)}</span>
+              <span class="tile-cat">${esc(d.category)}</span>
+            </div>
+            <div class="tile-body">
+              <h3 id="${esc(d.slug)}-title">${esc(d.name)}</h3>
+              <p class="tile-tagline">${esc(d.tagline)}</p>
+              <p class="tile-desc">${esc(d.summary)}</p>
+              <div class="tile-actions">
+                <span class="status-chip">${esc(d.status)}</span>
+                <a href="${devHref(d.slug)}" class="tile-link">仕様を見る<span class="sr-only">（${esc(d.name)}）</span> ↗</a>
+              </div>
+            </div>
+            <div class="tile-image">
+              <img src="${root + esc(d.image)}" alt="${esc(d.alt)}" loading="lazy">
+            </div>
+            <div class="tile-bar" aria-hidden="true"></div>
+          </article>`;
+  }
+
+  /* ----- パーツ:作品のカード ----- */
+  function workHTML(w) {
+    var cover = w.image
+      ? `<div class="work-cover"><img src="${root + esc(w.image)}" alt="${esc(w.alt)}"></div>`
+      : '';
+    var attrs = w.image ? ' class="work-card has-image" tabindex="0"' : ' class="work-card"';
+    return `
+            <li${attrs}>
+              ${cover}
+              <div class="work-meta"><span class="work-cat">${esc(w.category)}</span><span>${esc(w.date)}</span></div>
+              <h3>${esc(w.name)}</h3>
+              <p>${esc(w.body)}</p>
+            </li>`;
+  }
+
+  /* ----- ヘッダー ----- */
+  var header = byId('site-header');
+  if (header) {
+    header.innerHTML = `
+      <nav class="site-nav" aria-label="メインナビゲーション">
+        <a href="${home}" class="site-logo">
+          <img src="${root}images/logo.png" alt="${esc(SITE.siteName)}" width="1600" height="320">
+        </a>
+        <ul class="nav-links">
+          <li><a href="${devIndex}">デバイス</a></li>
+          <li><a href="${devIndex}#works">作品集</a></li>
+          <li><a href="${home}#contact">お問い合わせ</a></li>
+        </ul>
+        <a href="#contact" class="nav-contact">連絡する</a>
+      </nav>`;
+  }
+
+  /* ----- トップの大きな見出し(FEATURED) ----- */
+  var hero = byId('featured');
+  if (hero && typeof FEATURED === 'object' && FEATURED) {
+    // サイト内リンクは root を付ける。外部(http)や #アンカーはそのまま
+    function featuredHref(h) {
+      return /^(https?:|mailto:|#)/.test(h) ? h : root + h;
     }
+    var heroNameHTML = (FEATURED.name || FEATURED.badge)
+      ? `<p class="hero-name">
+          ${FEATURED.name ? `<span class="font-display">${esc(FEATURED.name)}</span>` : ''}
+          ${FEATURED.badge ? `<span class="status-badge">${esc(FEATURED.badge)}</span>` : ''}
+        </p>`
+      : '';
+    var heroButtons = (FEATURED.buttons || []).map(function (b) {
+      var cls = b.style === 'ghost' ? 'btn-ghost' : 'btn-primary';
+      var ext = /^https?:/.test(b.href) ? ' target="_blank" rel="noopener"' : '';
+      return `<a href="${esc(featuredHref(b.href))}" class="btn ${cls}"${ext}>${esc(b.text)}</a>`;
+    }).join('\n          ');
+
+    hero.innerHTML = `
+      <div class="container-md">
+        <p class="hero-label"><span aria-hidden="true"></span>${esc(FEATURED.label || 'FEATURED')}<span aria-hidden="true"></span></p>
+        <h1 id="hero-title">${esc(FEATURED.title)}</h1>
+        ${heroNameHTML}
+        <div class="hero-buttons">
+          ${heroButtons}
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="${root + esc(FEATURED.image)}" alt="${esc(FEATURED.alt)}">
+      </div>
+      <div class="hero-bar" aria-hidden="true"></div>`;
+  }
+
+  /* ----- デバイスのタイル( data-devices="latest" / "all" ) ----- */
+  document.querySelectorAll('[data-devices]').forEach(function (el) {
+    var list = el.getAttribute('data-devices') === 'latest'
+      ? LATEST_DEVICES.map(findDevice).filter(Boolean)
+      : DEVICES;
+    el.innerHTML = list.map(tileHTML).join('');
   });
 
-  document.querySelectorAll('.marquee').forEach(function (marquee) {
-    var track = marquee.querySelector('.marquee-track');
-    var list = track && track.querySelector('.work-list');
-    if (!list) return;
+  /* ----- 作品のカード( data-works="latest" / "all" ) ----- */
+  document.querySelectorAll('[data-works]').forEach(function (el) {
+    var list = el.getAttribute('data-works') === 'latest'
+      ? WORKS.filter(function (w) { return w.latest; })
+      : WORKS;
+    el.innerHTML = list.map(workHTML).join('');
+  });
 
-    function build() {
-      // いったん複製を消して、作り直す(画面幅が変わったときのため)
-      track.querySelectorAll('.work-list[data-clone]').forEach(function (el) { el.remove(); });
-      track.style.removeProperty('--marquee-distance');
-      track.style.removeProperty('--marquee-duration');
-      marquee.classList.remove('is-static');
+  /* ----- 各デバイスのページの本文 ----- */
+  var main = byId('device-main');
+  var dev = main && current && findDevice(current);
+  if (dev) {
+    document.title = dev.name + ' ' + dev.category + ' — ' + SITE.siteName;
+    var meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute('content', dev.overview);
 
-      if (list.children.length < MIN_ITEMS) {
-        marquee.classList.add('is-static');
-        return;
-      }
+    var highlights = (dev.highlights || []).map(function (h) {
+      return `
+            <li class="highlight">
+              <h3>${esc(h.title)}</h3>
+              <p>${esc(h.body)}</p>
+            </li>`;
+    }).join('');
+    var specs = (dev.specs || []).map(function (s) {
+      return `
+            <div class="spec-row">
+              <dt>${esc(s.label)}</dt>
+              <dd>${esc(s.value)}</dd>
+            </div>`;
+    }).join('');
 
-      var w = list.offsetWidth;                         // リスト1つ分の幅
-      if (!w) return;
-      var copies = Math.ceil(marquee.offsetWidth / w);  // 画面を埋めるのに必要な複製の数
-      for (var i = 0; i < copies; i++) {
-        var copy = list.cloneNode(true);
-        copy.setAttribute('data-clone', '');
-        copy.setAttribute('aria-hidden', 'true');
-        copy.querySelectorAll('[tabindex]').forEach(function (el) { el.setAttribute('tabindex', '-1'); });
-        track.appendChild(copy);
-      }
-      track.style.setProperty('--marquee-distance', '-' + w + 'px');
-      track.style.setProperty('--marquee-duration', (w / SPEED) + 's');
+    main.innerHTML = `
+    <section class="device-hero" aria-labelledby="device-title">
+      <div class="container-sm">
+        <p class="eyebrow">${esc(dev.category)}</p>
+        <h1 id="device-title">${esc(dev.name)}</h1>
+        <p class="device-tagline">${esc(dev.tagline)}</p>
+        <span class="status-badge">${esc(dev.status)}</span>
+      </div>
+      <div class="device-image">
+        <img src="${root + esc(dev.image)}" alt="${esc(dev.alt)}">
+      </div>
+      <div class="hero-bar" aria-hidden="true"></div>
+    </section>
+
+    <section class="section-overview" aria-labelledby="overview-title">
+      <div class="container-sm">
+        <h2 id="overview-title" class="eyebrow">OVERVIEW<span class="sr-only">（概要）</span></h2>
+        <p class="overview-text">${esc(dev.overview)}</p>
+        <ul class="highlights">${highlights}
+        </ul>
+      </div>
+    </section>
+
+    <section class="section-specs" aria-labelledby="specs-title">
+      <div class="container-sm">
+        <p class="eyebrow">SPECIFICATIONS</p>
+        <h2 id="specs-title">仕様</h2>
+        <dl class="spec-list">${specs}
+        </dl>
+        <p class="spec-note">${esc(SITE.specNote)}</p>
+      </div>
+    </section>`;
+  }
+
+  /* ----- お問い合わせ ----- */
+  var contact = byId('contact');
+  if (contact) {
+    var githubButton = SITE.showGithubButton
+      ? `<a href="${SITE.github}" class="btn btn-ghost-ink btn-lg">GitHubでソースを見る ›</a>`
+      : '';
+    contact.innerHTML = `
+      <div class="container-sm">
+        <p class="eyebrow">CONTACT</p>
+        <h2 id="contact-title">${SITE.contactCatch}</h2>
+        <p class="contact-text">${SITE.contactText}</p>
+        <div class="contact-buttons">
+          <a href="mailto:${SITE.email}" class="btn btn-primary btn-lg">メールで連絡する</a>
+          ${githubButton}
+        </div>
+      </div>`;
+  }
+
+  /* ----- 前へ・次へ(デバイスページのみ) ----- */
+  var pager = byId('site-pager');
+  if (pager && current) {
+    var n = DEVICES.length;
+    var i = DEVICES.findIndex(function (d) { return d.slug === current; });
+    if (i >= 0) {
+      var prev = DEVICES[(i - 1 + n) % n];
+      var next = DEVICES[(i + 1) % n];
+      pager.innerHTML = `
+        <div class="container-sm">
+          <a href="${devHref(prev.slug)}" class="pager-link">
+            <span aria-hidden="true">‹</span>
+            <span><small>前へ</small><span class="font-display">${esc(prev.name)}</span></span>
+          </a>
+          <a href="${devIndex}" class="pager-list">デバイス一覧</a>
+          <a href="${devHref(next.slug)}" class="pager-link pager-next">
+            <span><small>次へ</small><span class="font-display">${esc(next.name)}</span></span>
+            <span aria-hidden="true">›</span>
+          </a>
+        </div>`;
     }
+  }
 
-    build();
-    var timer;
-    window.addEventListener('resize', function () {
-      clearTimeout(timer);
-      timer = setTimeout(build, 150);
-    });
-  });
+  /* ----- フッター ----- */
+  var footer = byId('site-footer');
+  if (footer) {
+    var deviceLinks = DEVICES.map(function (d) {
+      return '<li><a href="' + devHref(d.slug) + '">' + esc(d.name) + '</a></li>';
+    }).join('');
+    var contactLink = SITE.showContactLinkInFooter
+      ? `<li><a href="${home}#contact">お問い合わせ</a></li>`
+      : '';
+    footer.innerHTML = `
+      <div class="container">
+        <p class="footer-note">${SITE.footerNote}</p>
+        <nav class="footer-nav" aria-label="フッター">
+          <div>
+            <h3>デバイス</h3>
+            <ul>${deviceLinks}</ul>
+          </div>
+          <div>
+            <h3>ラボについて</h3>
+            <ul>
+              <li><a href="${devIndex}">デバイス一覧</a></li>
+              <li><a href="${devIndex}#works">作品集</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>つながる</h3>
+            <ul>
+              <li><a href="${SITE.github}">GitHub</a></li>
+              <li><a href="${SITE.x}">X</a></li>
+              ${contactLink}
+            </ul>
+          </div>
+        </nav>
+        <div class="footer-bottom">
+          <p>${SITE.copyright}</p>
+          <p>${SITE.madeBy}</p>
+        </div>
+      </div>`;
+  }
+
+  /* ----- 後から中身を入れたので、#contact などの位置へ改めてジャンプ ----- */
+  if (location.hash.length > 1) {
+    var target = document.getElementById(location.hash.slice(1));
+    if (target) target.scrollIntoView({ behavior: 'instant' });
+  }
 })();
