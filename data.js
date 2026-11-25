@@ -179,7 +179,7 @@ var FEATURED = {
   title: "LESS TO SEE, MORE TO HEAR.",   // 大きな見出し
   name: "F100",                          // 名前(空にすると非表示)
   badge: "開発中",                        // 名前の横のバッジ(空にすると非表示)
-  image: "images/featured-f100.jpg",     // トップ専用の画像
+  image: "images/featured/f100.jpg",     // トップ専用の画像
   alt: "F100のイメージ画像",              // 画像の説明文
   buttons: [
     { text: "仕様を見る →",     href: "devices/f100.html", style: "primary" },
