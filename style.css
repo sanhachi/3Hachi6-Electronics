@@ -483,19 +483,13 @@ img { display: block; max-width: 100%; }
   line-height: 1rem;
 }
 /* ---------- 画像つき作品カード(めくると文章が見える) ---------- */
-.work-card.has-image {
-  position: relative;
-  height: 20rem;
-  /* 幅は写真の縦横比で決まる(--ar は script.js が入れる)。16〜30rem の範囲 */
-  width: clamp(16rem, calc(20rem * var(--ar, 1.5)), 30rem);
-}
-.work-grid .work-card.has-image { width: auto; }   /* 一覧ページは、グリッドの幅に従う */
 
-/* ---------- 画像つき作品カード(めくると文章が見える) ---------- */
-/* 大きさは普通のカードと同じ(幅18rem、高さは文章に合わせる) */
-/* ---------- 画像つき作品カード(めくると文章が見える) ---------- */
-/* ---------- 画像つき作品カード(めくると文章が見える) ---------- */
-/* 幅18rem × 高さ12rem(3:2)に固定。文章があふれた分は切れる */
+  /* 幅は写真の縦横比で決まる(--ar は script.js が入れる)。16〜30rem の範囲 */
+
+.work-grid .work-card.has-image { width: auto; }   /* 一覧ページは、グリッドの幅に従う */
+.work-card { height: 12rem; }
+
+
 .work-card.has-image {
   position: relative;
   overflow: hidden;
