@@ -378,20 +378,6 @@ img { display: block; max-width: 100%; }
   overflow: hidden;/* 画像の角をカードの角丸に合わせる */
 }
 .work-card:hover { border-color: var(--brand-strong); border-top-color: var(--brand); } 
-.work-image {
-  position: relative;
-  aspect-ratio: 3 / 2;
-  margin: -1.5rem -1.5rem 0.25rem;   /* カードの padding を打ち消して端まで広げる */
-  background: var(--brand-soft);      /* contain にしたときの余白の色 */
-}
-.work-image img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;                  /* 見切れが嫌なら contain */
-  transition: transform .5s;
-}
-
-.work-card:hover .work-image img { transform: scale(1.04); }
 .work-meta {
   display: flex;
   align-items: center;
@@ -482,13 +468,23 @@ img { display: block; max-width: 100%; }
   font-size: 0.75rem;
   line-height: 1rem;
 }
+.device-image {
+  position: relative;
+  width: 100%;
+  max-width: 48rem;
+  aspect-ratio: 4 / 3;      /* スマホ */
+  max-height: 60vh;         /* 画面の6割より高くしない */
+  margin: 2rem auto 0;
+}
+.device-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;      /* 切らずに全体を見せる(切ってよければ cover) */
+}
+
 /* ---------- 画像つき作品カード(めくると文章が見える) ---------- */
-
-  /* 幅は写真の縦横比で決まる(--ar は script.js が入れる)。16〜30rem の範囲 */
-
-.work-grid .work-card.has-image { width: auto; }   /* 一覧ページは、グリッドの幅に従う */
-.work-card { height: 12rem; }
-
 
 .work-card.has-image {
   position: relative;
@@ -636,6 +632,7 @@ img { display: block; max-width: 100%; }
   .device-hero { padding-top: 5rem; }
   .device-hero h1 { font-size: 4.5rem; }
   .device-tagline { font-size: 1.5rem; line-height: 2rem; }
+  .device-image { aspect-ratio: 16 / 9; }
 
   .section-overview, .section-specs { padding: 6rem 0; }
   .overview-text { font-size: 1.875rem; }
