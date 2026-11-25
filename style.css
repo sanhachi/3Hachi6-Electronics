@@ -493,12 +493,14 @@ img { display: block; max-width: 100%; }
 
 /* ---------- 画像つき作品カード(めくると文章が見える) ---------- */
 /* 大きさは普通のカードと同じ(幅18rem、高さは文章に合わせる) */
+/* ---------- 画像つき作品カード(めくると文章が見える) ---------- */
 .work-card.has-image { position: relative; overflow: hidden; }
 
 .work-cover {
   position: absolute;
   inset: 0;
   z-index: 2;
+  overflow: hidden;               /* 画像が枠からはみ出さない */
   background: var(--brand-soft);
   transform-origin: left center;
   backface-visibility: hidden;
@@ -508,10 +510,12 @@ img { display: block; max-width: 100%; }
               box-shadow .7s;
 }
 .work-cover img {
+  position: absolute;             /* 高さを一切押し広げない */
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;          /* 枠を埋めて、はみ出した分は切る */
-  object-position: center;    /* 見せたい位置があれば center top などに */
+  object-fit: cover;              /* 3:2の画像を枠に合わせ、はみ出しは切る */
+  object-position: center;
 }
 /* 右下の「めくれそう」な角 */
 .work-cover::after {
