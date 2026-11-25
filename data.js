@@ -227,7 +227,7 @@ var LATEST_DEVICES = ["p100", "d100"];
    ・載せたくなくなったら、行の頭に // を付けてください(消さなくてOK)。 */
 var WORKS = [
     { name: "Status Console", category: "IoTアプリ", date: "2026.11", latest: true,
-    image: "images/works/status-console.jpg",   // 画像があるときだけ書く
+    image: "images/works/status.jpg",   // 画像があるときだけ書く
     alt: "Fire Stickに表示されたStatus Consoleの画面",
     body: "古いFire Stickで日常的な情報を常時表示。緊急の際はクールに警告。" },
 	

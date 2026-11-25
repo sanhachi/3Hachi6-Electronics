@@ -482,20 +482,63 @@ img { display: block; max-width: 100%; }
   font-size: 0.75rem;
   line-height: 1rem;
 }
-.device-image {
+/* ---------- 画像つき作品カード(めくると文章が見える) ---------- */
+.work-card.has-image {
   position: relative;
-  width: 100%;
-  max-width: 48rem;
-  margin: 2rem auto 0;
-  /* aspect-ratio は外す(写真の比率に任せる) */
+  height: 20rem;
+  /* 幅は写真の縦横比で決まる(--ar は script.js が入れる)。16〜30rem の範囲 */
+  width: clamp(16rem, calc(20rem * var(--ar, 1.5)), 30rem);
 }
-.device-image img {
-  position: static;       /* 枠いっぱいに敷き詰める指定をやめる */
-  width: 100%;
-  height: auto;
-  max-height: 70vh;       /* 縦長の写真が大きくなりすぎないように */
-  object-fit: contain;
+.work-grid .work-card.has-image { width: auto; }   /* 一覧ページは、グリッドの幅に従う */
+
+.work-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: var(--brand-soft);          /* contain のときの余白の色 */
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  transform-origin: left center;
+  backface-visibility: hidden;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: transform .7s cubic-bezier(.4, 0, .2, 1),
+              opacity .25s ease .45s,
+              box-shadow .7s;
 }
+.work-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;                    /* 切らずに全体を見せる */
+}
+/* 右下の「めくれそう」な角 */
+.work-cover::after {
+  content: '';
+  position: absolute;
+  right: 0; bottom: 0;
+  width: 1.5rem; height: 1.5rem;
+  background: linear-gradient(135deg, transparent 50%, var(--brand) 50%);
+}
+
+/* めくれた状態(タップ / キーボード / PCではホバー) */
+.work-card.is-open .work-cover,
+.work-card.has-image:focus-within .work-cover {
+  transform: perspective(1000px) rotateY(-115deg);
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 12px 0 24px rgba(0, 0, 0, .25);
+}
+@media (hover: hover) {
+  .work-card.has-image:hover .work-cover {
+    transform: perspective(1000px) rotateY(-115deg);
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 12px 0 24px rgba(0, 0, 0, .25);
+  }
+}
+/* めくっている間は流れを止めて、読めるようにする */
+.marquee:has(.work-card.is-open) .marquee-track { animation-play-state: paused; }
+
+
+
 
 .section-overview { background: var(--background); padding: 5rem 0; }
 .overview-text {
