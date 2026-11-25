@@ -13,7 +13,7 @@ var SITE = {
   email: 'sanhachi_x86@icloud.com',
 
   // フッター「つながる」のリンク先
-  github: 'https://github.com/sanhachi',
+  github: 'https://github.com/sanhachi/3Hachi6-Electronics',
   x: 'https://x.com/386electronics',
 
   // お問い合わせブロックに「GitHubでソースを見る」ボタンを出すか(true / false)
