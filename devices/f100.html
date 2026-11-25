@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>F100 音楽プレーヤー — 3Hachi6 Electronics</title>
-  <meta name="description" content="画面を見る時間を減らし、音楽を聴く時間を増やすための音楽プレーヤー。表示は必要最小限に抑え、ポケットの中でも手探りで操作できることを目指しています。">
+  <title>3Hachi6 Electronics</title>
+  <meta name="description" content="3Hachi6 Electronicsの自作デバイス">
   <meta name="theme-color" content="#f4f7f7">
   <link rel="icon" href="../images/icon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,104 +14,26 @@
 </head>
 <body data-root="../" data-device="f100">
 
-  <!-- ヘッダー:中身は shared.js が入れます(直すときは shared.js) -->
+  <!-- ヘッダー:中身は shared.js が入れます -->
   <header class="site-header" id="site-header"></header>
 
   <main>
 
-    <!-- ===== 上の大きな見出し ===== -->
-    <section class="device-hero" aria-labelledby="device-title">
-      <div class="container-sm">
-        <p class="eyebrow">音楽プレーヤー</p>
-        <h1 id="device-title">F100</h1>
-        <p class="device-tagline">LESS TO SEE, MORE TO HEAR.</p>
-        <span class="status-badge">開発中</span>
-      </div>
-      <div class="device-image">
-        <img src="../images/f100.jpg" alt="黒い布の上に置かれた、白いケーブルの3.5mmイヤホンプラグ">
-      </div>
-      <div class="hero-bar" aria-hidden="true"></div>
-    </section>
+    <!-- デバイスの紹介:中身は data.js の「f100」から作られます(文章を直すときは data.js) -->
+    <div id="device-main"></div>
 
-    <!-- ===== 概要と3つの特長 ===== -->
-    <section class="section-overview" aria-labelledby="overview-title">
-      <div class="container-sm">
-        <h2 id="overview-title" class="eyebrow">OVERVIEW<span class="sr-only">（概要）</span></h2>
-        <p class="overview-text">画面を見る時間を減らし、音楽を聴く時間を増やすための音楽プレーヤー。</p>
-        <ul class="highlights">
-
-            <li class="highlight">
-              <h3>表示部分の省略</h3>
-              <p>聴くための閉眼</p>
-            </li>
-
-            <li class="highlight">
-              <h3>手で覚える操作</h3>
-              <p>片手で操作できる5ディレクションスイッチ。</p>
-            </li>
-
-            <li class="highlight">
-              <h3>音に集中</h3>
-              <p>通知もアプリもない、音楽のためだけの道具。</p>
-            </li>
-
-        </ul>
-      </div>
-    </section>
-
-    <!-- ===== 仕様(行を増やすときは <div class="spec-row"> をコピー) ===== -->
-    <section class="section-specs" aria-labelledby="specs-title">
-      <div class="container-sm">
-        <p class="eyebrow">SPECIFICATIONS</p>
-        <h2 id="specs-title">仕様</h2>
-        <dl class="spec-list">
-
-            <div class="spec-row">
-              <dt>種別</dt>
-              <dd>音楽プレーヤー</dd>
-            </div>
-
-            <div class="spec-row">
-              <dt>プロセッサ</dt>
-              <dd>XIAO ESP32-C3</dd>
-            </div>
-
-            <div class="spec-row">
-              <dt>ディスプレイ</dt>
-              <dd>なし</dd>
-            </div>
-
-            <div class="spec-row">
-              <dt>入力方式</dt>
-              <dd>5ディレクションスイッチ</dd>
-            </div>
-
-            <div class="spec-row">
-              <dt>電源</dt>
-              <dd>充電式バッテリー 500mAh前後</dd>
-            </div>
-
-            <div class="spec-row">
-              <dt>接続方式</dt>
-              <dd>TFカード</dd>
-            </div>
-
-        </dl>
-        <p class="spec-note">仕様は開発中のものであり、予告なく変更される場合があります。</p>
-      </div>
-    </section>
-
-    <!-- 前へ・次へ:中身は shared.js が入れます -->
+    <!-- 前へ・次へ -->
     <nav class="pager" id="site-pager" aria-label="ほかのデバイス"></nav>
 
-    <!-- お問い合わせ:中身は shared.js が入れます(メールアドレスやキャッチコピーも shared.js) -->
+    <!-- お問い合わせ -->
     <section id="contact" class="section-contact" aria-labelledby="contact-title"></section>
 
   </main>
 
-  <!-- フッター:中身は shared.js が入れます(直すときは shared.js) -->
+  <!-- フッター -->
   <footer class="site-footer" id="site-footer"></footer>
 
+  <script src="../data.js"></script>
   <script src="../shared.js"></script>
   <script src="../script.js"></script>
 </body>

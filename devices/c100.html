@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>C100 パーソナルコンピューター — 3Hachi6 Electronics</title>
-  <meta name="description" content="3Hachi6として初めてのx86アーキテクチャPC。現在は構想段階で、筐体のかたちと内部構成を検討しています。">
+  <title>3Hachi6 Electronics</title>
+  <meta name="description" content="3Hachi6 Electronicsの自作デバイス">
   <meta name="theme-color" content="#f4f7f7">
   <link rel="icon" href="../images/icon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,104 +14,26 @@
 </head>
 <body data-root="../" data-device="c100">
 
-  <!-- ヘッダー:中身は shared.js が入れます(直すときは shared.js) -->
+  <!-- ヘッダー:中身は shared.js が入れます -->
   <header class="site-header" id="site-header"></header>
 
   <main>
 
-    <!-- ===== 上の大きな見出し ===== -->
-    <section class="device-hero" aria-labelledby="device-title">
-      <div class="container-sm">
-        <p class="eyebrow">パーソナルコンピューター</p>
-        <h1 id="device-title">C100</h1>
-        <p class="device-tagline">TRIPLE FAULT.</p>
-        <span class="status-badge">構想段階</span>
-      </div>
-      <div class="device-image">
-        <img src="../images/c100.jpg" alt="レトロなデザインの折り畳みポータブルPCのスケッチ">
-      </div>
-      <div class="hero-bar" aria-hidden="true"></div>
-    </section>
+    <!-- デバイスの紹介:中身は data.js の「c100」から作られます(文章を直すときは data.js) -->
+    <div id="device-main"></div>
 
-    <!-- ===== 概要と3つの特長 ===== -->
-    <section class="section-overview" aria-labelledby="overview-title">
-      <div class="container-sm">
-        <h2 id="overview-title" class="eyebrow">OVERVIEW<span class="sr-only">（概要）</span></h2>
-        <p class="overview-text">3Hachi6として初めてのx86アーキテクチャPC。現在は構想段階で、筐体のかたちと内部構成を検討しています。</p>
-        <ul class="highlights">
-
-            <li class="highlight">
-              <h3>はじめてのx86</h3>
-              <p>マイコンから、パソコンへ。</p>
-            </li>
-
-            <li class="highlight">
-              <h3>小さな筐体</h3>
-              <p>机の上に置ける、コンパクトなかたちを検討中。</p>
-            </li>
-
-            <li class="highlight">
-              <h3>これから</h3>
-              <p>構成と設計の詳細は順次公開予定。</p>
-            </li>
-
-        </ul>
-      </div>
-    </section>
-
-    <!-- ===== 仕様(行を増やすときは <div class="spec-row"> をコピー) ===== -->
-    <section class="section-specs" aria-labelledby="specs-title">
-      <div class="container-sm">
-        <p class="eyebrow">SPECIFICATIONS</p>
-        <h2 id="specs-title">仕様</h2>
-        <dl class="spec-list">
-
-            <div class="spec-row">
-              <dt>種別</dt>
-              <dd>パーソナルコンピューター</dd>
-            </div>
-
-            <div class="spec-row">
-              <dt>プロセッサ</dt>
-              <dd>検討中</dd>
-            </div>
-
-            <div class="spec-row">
-              <dt>ディスプレイ</dt>
-              <dd>4-6インチ前後</dd>
-            </div>
-
-            <div class="spec-row">
-              <dt>入力方式</dt>
-              <dd>キーボード、USBマウスなど</dd>
-            </div>
-
-            <div class="spec-row">
-              <dt>電源</dt>
-              <dd>充電式バッテリー</dd>
-            </div>
-
-            <div class="spec-row">
-              <dt>接続方式</dt>
-              <dd>Wi-Fi/Bluetooth/USBなど</dd>
-            </div>
-
-        </dl>
-        <p class="spec-note">仕様は開発中のものであり、予告なく変更される場合があります。</p>
-      </div>
-    </section>
-
-    <!-- 前へ・次へ:中身は shared.js が入れます -->
+    <!-- 前へ・次へ -->
     <nav class="pager" id="site-pager" aria-label="ほかのデバイス"></nav>
 
-    <!-- お問い合わせ:中身は shared.js が入れます(メールアドレスやキャッチコピーも shared.js) -->
+    <!-- お問い合わせ -->
     <section id="contact" class="section-contact" aria-labelledby="contact-title"></section>
 
   </main>
 
-  <!-- フッター:中身は shared.js が入れます(直すときは shared.js) -->
+  <!-- フッター -->
   <footer class="site-footer" id="site-footer"></footer>
 
+  <script src="../data.js"></script>
   <script src="../shared.js"></script>
   <script src="../script.js"></script>
 </body>
