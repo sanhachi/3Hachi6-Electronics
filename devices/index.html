@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>デバイス一覧 — 3Hachi6 Electronics</title>
+  <meta name="description" content="3Hachi6 Electronicsがつくったデバイスの一覧。開発中のものを含みます。">
+  <meta name="theme-color" content="#f4f7f7">
+  <link rel="icon" href="../images/icon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body data-root="../">
+
+  <!-- ヘッダー:中身は shared.js が入れます(直すときは shared.js) -->
+  <header class="site-header" id="site-header"></header>
+
+  <main>
+
+    <!-- ===== デバイス一覧 =====
+         デバイスを増やすときは、下の <article> のかたまりを丸ごとコピーして書き換えます。
+         あわせて shared.js の DEVICES にも1行足してください(フッターと「前へ・次へ」用)。
+         カード左上の <span class="tile-date"> に、作った年月(例 2026.11)を入れると表示されます。 -->
+    <section id="devices" class="section-devices" aria-labelledby="devices-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">DEVICES</p>
+            <h1 id="devices-title">デバイス一覧</h1>
+          </div>
+          <p class="section-note">開発中のものを含む、すべてのデバイス。</p>
+        </div>
+        <div class="tile-grid">
+
+          <!-- ---------- F100 ---------- -->
+          <article id="f100" class="tile tile-light" aria-labelledby="f100-title">
+            <div class="tile-top">
+              <span class="tile-date"><!-- 作った年月(例 2026.11)をここに --></span>
+              <span class="tile-cat">音楽プレーヤー</span>
+            </div>
+            <div class="tile-body">
+              <h3 id="f100-title">F100</h3>
+              <p class="tile-tagline">LESS TO SEE, MORE TO HEAR.</p>
+              <p class="tile-desc">画面を見る時間を減らし、音楽を聴く時間を増やすための音楽プレーヤー。</p>
+              <div class="tile-actions">
+                <span class="status-chip">開発中</span>
+                <a href="f100.html" class="tile-link">仕様を見る<span class="sr-only">（F100）</span> ↗</a>
+              </div>
+            </div>
+            <div class="tile-image">
+              <img src="../images/f100.jpg" alt="黒い布の上に置かれた、白いケーブルの3.5mmイヤホンプラグ" loading="lazy">
+            </div>
+            <div class="tile-bar" aria-hidden="true"></div>
+          </article>
+
+          <!-- ---------- P100 ---------- -->
+          <article id="p100" class="tile tile-dark" aria-labelledby="p100-title">
+            <div class="tile-top">
+              <span class="tile-date"><!-- 作った年月(例 2026.11)をここに --></span>
+              <span class="tile-cat">ポケットベル</span>
+            </div>
+            <div class="tile-body">
+              <h3 id="p100-title">P100</h3>
+              <p class="tile-tagline">ポケットベルをもう一度</p>
+              <p class="tile-desc">Seeed Studio XIAO ESP32C3を搭載した小さなポケットベル。</p>
+              <div class="tile-actions">
+                <span class="status-chip">量産検討中</span>
+                <a href="p100.html" class="tile-link">仕様を見る<span class="sr-only">（P100）</span> ↗</a>
+              </div>
+            </div>
+            <div class="tile-image">
+              <img src="../images/p100.jpg" alt="「Unit-01」と書かれた白い筐体に、モノクロ液晶を搭載したP100の試作機" loading="lazy">
+            </div>
+            <div class="tile-bar" aria-hidden="true"></div>
+          </article>
+
+          <!-- ---------- D100 ---------- -->
+          <article id="d100" class="tile tile-light" aria-labelledby="d100-title">
+            <div class="tile-top">
+              <span class="tile-date"><!-- 作った年月(例 2026.11)をここに --></span>
+              <span class="tile-cat">PDA</span>
+            </div>
+            <div class="tile-body">
+              <h3 id="d100-title">D100</h3>
+              <p class="tile-tagline">Pocket PCの先へ</p>
+              <p class="tile-desc">ESP32-32Eと3.5インチディスプレイを組み合わせた携帯情報端末。</p>
+              <div class="tile-actions">
+                <span class="status-chip">開発中</span>
+                <a href="d100.html" class="tile-link">仕様を見る<span class="sr-only">（D100）</span> ↗</a>
+              </div>
+            </div>
+            <div class="tile-image">
+              <img src="../images/d100.jpg" alt="ロック画面を表示した、3.5インチタッチスクリーンのD100試作機" loading="lazy">
+            </div>
+            <div class="tile-bar" aria-hidden="true"></div>
+          </article>
+
+          <!-- ---------- W100 ---------- -->
+          <article id="w100" class="tile tile-dark" aria-labelledby="w100-title">
+            <div class="tile-top">
+              <span class="tile-date"><!-- 作った年月(例 2026.11)をここに --></span>
+              <span class="tile-cat">ウェアラブル端末</span>
+            </div>
+            <div class="tile-body">
+              <h3 id="w100-title">W100</h3>
+              <p class="tile-tagline">手首ではない選択</p>
+              <p class="tile-desc">D100と同サイズの本体に、前腕へしっかり固定できる大きなバンドを搭載。</p>
+              <div class="tile-actions">
+                <span class="status-chip">開発中</span>
+                <a href="w100.html" class="tile-link">仕様を見る<span class="sr-only">（W100）</span> ↗</a>
+              </div>
+            </div>
+            <div class="tile-image">
+              <img src="../images/w100.jpg" alt="時計画面を表示した、3.5インチ画面のW100試作機" loading="lazy">
+            </div>
+            <div class="tile-bar" aria-hidden="true"></div>
+          </article>
+
+          <!-- ---------- C100 ---------- -->
+          <article id="c100" class="tile tile-light" aria-labelledby="c100-title">
+            <div class="tile-top">
+              <span class="tile-date"><!-- 作った年月(例 2026.11)をここに --></span>
+              <span class="tile-cat">パーソナルコンピューター</span>
+            </div>
+            <div class="tile-body">
+              <h3 id="c100-title">C100</h3>
+              <p class="tile-tagline">TRIPLE FAULT.</p>
+              <p class="tile-desc">筐体と構成の検討中</p>
+              <div class="tile-actions">
+                <span class="status-chip">構想段階</span>
+                <a href="c100.html" class="tile-link">仕様を見る<span class="sr-only">（C100）</span> ↗</a>
+              </div>
+            </div>
+            <div class="tile-image">
+              <img src="../images/c100.jpg" alt="レトロなデザインの折り畳みポータブルPCのスケッチ" loading="lazy">
+            </div>
+            <div class="tile-bar" aria-hidden="true"></div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== その他の作品(すべて) =====
+         作品を増やすときは、<li class="work-card"> のかたまりをコピーして追加します。
+         トップの「最新の作品」にも載せたいときは、index.html にも同じカードを貼ります。 -->
+    <section id="works" class="section-works" aria-labelledby="works-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">OTHER WORKS</p>
+            <h2 id="works-title">その他の作品</h2>
+          </div>
+          <p class="section-note">これまでの作品や構想をざっくりと</p>
+        </div>
+        <ul class="work-grid">
+
+            <li class="work-card">
+              <div class="work-meta"><span class="work-cat">IoTアプリ</span><span>2026.11</span></div>
+              <h3>Status Console</h3>
+              <p>古いFire Stickで日常的な情報を常時表示。緊急の際はクールに警告。</p>
+            </li>
+
+            <li class="work-card">
+              <div class="work-meta"><span class="work-cat">フットスイッチ</span><span>2026.09</span></div>
+              <h3>DirectStep</h3>
+              <p>青軸キースイッチとキーボードを接続。段ボール製で省スペース。</p>
+            </li>
+
+            <li class="work-card">
+              <div class="work-meta"><span class="work-cat">ナビもどき</span><span>2025.08</span></div>
+              <h3>MapHUD</h3>
+              <p>ヘルメットに接続した小さなOLEDディスプレイで、ターンバイターンの案内。自転車のスマホ運転を防止。</p>
+            </li>
+
+            <li class="work-card">
+              <div class="work-meta"><span class="work-cat">製品構想</span><span>2026.08</span></div>
+              <h3>C980</h3>
+              <p>往年のPC-98を意識した、レトロなデスクトップPC。</p>
+            </li>
+
+            <li class="work-card">
+              <div class="work-meta"><span class="work-cat">製品構想</span><span>2026.12</span></div>
+              <h3>Multi Remote</h3>
+              <p>ESP32C3を使用し、赤外線とBLEの機能を兼ねた多機能リモコン。</p>
+            </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- お問い合わせ:中身は shared.js が入れます(メールアドレスやキャッチコピーも shared.js) -->
+    <section id="contact" class="section-contact" aria-labelledby="contact-title"></section>
+
+  </main>
+
+  <!-- フッター:中身は shared.js が入れます(直すときは shared.js) -->
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="../shared.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>

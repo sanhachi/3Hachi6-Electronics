@@ -52,6 +52,7 @@ var DEVICES = [
   var current = body.getAttribute('data-device') || ''; // デバイスページなら、そのslug
   var home = root + 'index.html';
   var devDir = root ? '' : 'devices/';
+  var devIndex = devDir + 'index.html';                // デバイス一覧ページ
 
   function byId(id) { return document.getElementById(id); }
   function devHref(slug) { return devDir + slug + '.html'; }
@@ -65,8 +66,8 @@ var DEVICES = [
           <img src="${root}images/logo.png" alt="3Hachi6 Electronics" width="1600" height="320">
         </a>
         <ul class="nav-links">
-          <li><a href="${home}#devices">デバイス</a></li>
-          <li><a href="${home}#works">作品集</a></li>
+          <li><a href="${devIndex}">デバイス</a></li>
+          <li><a href="${devIndex}#works">作品集</a></li>
           <li><a href="${home}#contact">お問い合わせ</a></li>
         </ul>
         <a href="#contact" class="nav-contact">連絡する</a>
@@ -105,7 +106,7 @@ var DEVICES = [
             <span aria-hidden="true">‹</span>
             <span><small>前へ</small><span class="font-display">${prev.name}</span></span>
           </a>
-          <a href="${home}#devices" class="pager-list">デバイス一覧</a>
+          <a href="${devIndex}" class="pager-list">デバイス一覧</a>
           <a href="${devHref(next.slug)}" class="pager-link pager-next">
             <span><small>次へ</small><span class="font-display">${next.name}</span></span>
             <span aria-hidden="true">›</span>
@@ -134,8 +135,8 @@ var DEVICES = [
           <div>
             <h3>ラボについて</h3>
             <ul>
-              <li><a href="${home}#devices">デバイス一覧</a></li>
-              <li><a href="${home}#works">作品集</a></li>
+              <li><a href="${devIndex}">デバイス一覧</a></li>
+              <li><a href="${devIndex}#works">作品集</a></li>
             </ul>
           </div>
           <div>

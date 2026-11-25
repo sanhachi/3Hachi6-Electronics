@@ -39,23 +39,26 @@
       <div class="hero-bar" aria-hidden="true"></div>
     </section>
 
-    <!-- ===== デバイス一覧 =====
-         デバイスを増やすときは、下の <article> のかたまりを丸ごとコピーして書き換えます。 -->
+    <!-- ===== 最新のデバイス =====
+         ここには「見せたいデバイス」を4つ並べます。
+         入れ替えるときは <article> のかたまりを、devices/index.html からコピーして差し替えます。
+         すべてのデバイスは devices/index.html(デバイス一覧)にあります。
+         カード左上の <span class="tile-date"> に、作った年月(例 2026.11)を入れると表示されます。 -->
     <section id="devices" class="section-devices" aria-labelledby="devices-title">
       <div class="container">
         <div class="section-head">
           <div>
-            <p class="eyebrow">DEVICES</p>
-            <h2 id="devices-title">デバイス一覧</h2>
+            <p class="eyebrow">LATEST DEVICES</p>
+            <h2 id="devices-title">最新のデバイス</h2>
           </div>
-          <p class="section-note">開発中のプロジェクトを含む、4つのデバイス。</p>
+          <p class="section-note">開発中のものを含む、最新の4つのデバイス。</p>
         </div>
         <div class="tile-grid">
 
           <!-- ---------- P100 ---------- -->
           <article id="p100" class="tile tile-dark" aria-labelledby="p100-title">
             <div class="tile-top">
-              <span class="tile-no">01</span>
+              <span class="tile-date"><!-- 作った年月(例 2026.11)をここに --></span>
               <span class="tile-cat">ポケットベル</span>
             </div>
             <div class="tile-body">
@@ -76,7 +79,7 @@
           <!-- ---------- D100 ---------- -->
           <article id="d100" class="tile tile-light" aria-labelledby="d100-title">
             <div class="tile-top">
-              <span class="tile-no">02</span>
+              <span class="tile-date"><!-- 作った年月(例 2026.11)をここに --></span>
               <span class="tile-cat">PDA</span>
             </div>
             <div class="tile-body">
@@ -97,7 +100,7 @@
           <!-- ---------- W100 ---------- -->
           <article id="w100" class="tile tile-dark" aria-labelledby="w100-title">
             <div class="tile-top">
-              <span class="tile-no">03</span>
+              <span class="tile-date"><!-- 作った年月(例 2026.11)をここに --></span>
               <span class="tile-cat">ウェアラブル端末</span>
             </div>
             <div class="tile-body">
@@ -118,7 +121,7 @@
           <!-- ---------- C100 ---------- -->
           <article id="c100" class="tile tile-light" aria-labelledby="c100-title">
             <div class="tile-top">
-              <span class="tile-no">04</span>
+              <span class="tile-date"><!-- 作った年月(例 2026.11)をここに --></span>
               <span class="tile-cat">パーソナルコンピューター</span>
             </div>
             <div class="tile-body">
@@ -131,24 +134,30 @@
               </div>
             </div>
             <div class="tile-image">
-              <img src="images/c100.png" alt="レトロなデザインの折り畳みポータブルPCのスケッチ" loading="lazy">
+              <img src="images/c100.jpg" alt="レトロなデザインの折り畳みポータブルPCのスケッチ" loading="lazy">
             </div>
             <div class="tile-bar" aria-hidden="true"></div>
           </article>
 
         </div>
+
+        <div class="section-more">
+          <a href="devices/index.html" class="btn btn-outline">すべてのデバイスを見る →</a>
+        </div>
       </div>
     </section>
 
-    <!-- ===== 作品集(横に流れるカード) =====
+    <!-- ===== 最新の作品(横に流れるカード) =====
+         ここには「見せたい作品」だけを並べます。すべての作品は devices/index.html の「その他の作品」にあります。
          作品を増やすときは、<li class="work-card"> のかたまりをコピーして追加します。
-         (ループ表示用の複製は script.js が自動で作るので、ここは1セットだけでOK) -->
+         (ループ表示用の複製は script.js が自動で作るので、ここは1セットだけでOK。
+          3つ以上あれば流れ、2つ以下のときは流れずに並びます) -->
     <section id="works" class="section-works" aria-labelledby="works-title">
       <div class="container-md">
         <div class="section-head">
           <div>
-            <p class="eyebrow">OTHER WORKS</p>
-            <h2 id="works-title">その他の作品</h2>
+            <p class="eyebrow">LATEST WORKS</p>
+            <h2 id="works-title">最新の作品</h2>
           </div>
           <p class="section-note">これまでの作品や構想をざっくりと</p>
         </div>
@@ -194,6 +203,11 @@
             </li>
             -->
           </ul>
+        </div>
+      </div>
+      <div class="container-md">
+        <div class="section-more">
+          <a href="devices/index.html#works" class="btn btn-outline">すべての作品を見る →</a>
         </div>
       </div>
     </section>
