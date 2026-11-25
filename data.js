@@ -226,17 +226,24 @@ var LATEST_DEVICES = ["p100", "d100"];
      false にすると、デバイス一覧ページの「その他の作品」にだけ出ます。
    ・載せたくなくなったら、行の頭に // を付けてください(消さなくてOK)。 */
 var WORKS = [
-  { name: "Status Console", category: "IoTアプリ", date: "2026.11", latest: true,
+    { name: "Status Console", category: "IoTアプリ", date: "2026.11", latest: true,
+    image: "images/works/status-console.jpg",   // 画像があるときだけ書く
+    alt: "Fire Stickに表示されたStatus Consoleの画面",
     body: "古いFire Stickで日常的な情報を常時表示。緊急の際はクールに警告。" },
+	
   { name: "DirectStep", category: "フットスイッチ", date: "2026.09", latest: true,
     body: "青軸キースイッチとキーボードを接続。段ボール製で省スペース。" },
+	
   { name: "MapHUD", category: "ナビもどき", date: "2025.08", latest: true,
     body: "ヘルメットに接続した小さなOLEDディスプレイで、ターンバイターンの案内。自転車のスマホ運転を防止。" },
+	
   { name: "C980", category: "製品構想", date: "2026.08", latest: true,
     body: "往年のPC-98を意識した、レトロなデスクトップPC。" },
+	
   { name: "Multi Remote", category: "製品構想", date: "2026.12", latest: true,
     body: "ESP32C3を使用し、赤外線とBLEの機能を兼ねた多機能リモコン。" },
+	
 
-  // { name: 'BLE Remote', category: 'リモコン', date: '2023', latest: false,
-  //   body: 'スライド送り用の小さなBluetoothリモコン。CR2032で約1年動作。' }
+  // { name: '製品名', category: 'カテゴリ', date: 'YYYY.MM', latest: false,
+  //   body: '説明' }
 ];

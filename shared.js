@@ -53,8 +53,12 @@
 
   /* ----- パーツ:作品のカード ----- */
   function workHTML(w) {
+    var img = w.image
+      ? `<div class="work-image"><img src="${root + esc(w.image)}" alt="${esc(w.alt)}" loading="lazy"></div>`
+      : '';
     return `
             <li class="work-card">
+              ${img}
               <div class="work-meta"><span class="work-cat">${esc(w.category)}</span><span>${esc(w.date)}</span></div>
               <h3>${esc(w.name)}</h3>
               <p>${esc(w.body)}</p>
