@@ -169,8 +169,53 @@ var DEVICES = [
   }
 ];
 
-/* トップの大きな見出しに出すデバイス(slug で指定) */
-var FEATURED = "f100";
+/* トップの大きな見出し(フィーチャー)
+   デバイスに限らず、ソフト・機能・ハードなど何でも載せられます。
+   画像はトップ専用のものを images/ に置いてOK(横長 16:9、1600×900px くらいがおすすめ)。
+   ボタンは何個でも可。style は 'primary'(塗り) / 'ghost'(枠線)。
+   href は、サイト内なら 'devices/f100.html' のように書き、外部なら https:// から書く。 */
+var FEATURED = {
+  label: "FEATURED PROJECT",             // 上の小さな英字ラベル(例:FEATURED SOFTWARE)
+  title: "LESS TO SEE, MORE TO HEAR.",   // 大きな見出し
+  name: "F100",                          // 名前(空にすると非表示)
+  badge: "開発中",                        // 名前の横のバッジ(空にすると非表示)
+  image: "images/featured-f100.jpg",     // トップ専用の画像
+  alt: "F100のイメージ画像",              // 画像の説明文
+  buttons: [
+    { text: "仕様を見る →",     href: "devices/f100.html", style: "primary" },
+    { text: "ほかのデバイス",   href: "#devices",          style: "ghost" }
+  ]
+};
+
+/* ── 書き換え用のひな形(使うときは上の FEATURED と入れ替える) ──
+
+// ソフトウェアをフィーチャーする場合
+var FEATURED = {
+  label: "FEATURED SOFTWARE",
+  title: "古いFire Stickを、情報ボードに。",
+  name: "Status Console",
+  badge: "公開中",
+  image: "images/featured-status-console.jpg",
+  alt: "Fire Stickに表示されたStatus Consoleの画面",
+  buttons: [
+    { text: "GitHubで見る →", href: "https://github.com/sanhachi/...", style: "primary" },
+    { text: "ほかの作品",     href: "#works",                          style: "ghost" }
+  ]
+};
+
+// 機能・ハードの一部をフィーチャーする場合
+var FEATURED = {
+  label: "FEATURED HARDWARE",
+  title: "手で覚える、5ディレクションスイッチ。",
+  name: "",        // 名前なし
+  badge: "",       // バッジなし
+  image: "images/featured-switch.jpg",
+  alt: "5ディレクションスイッチのクローズアップ",
+  buttons: [
+    { text: "F100を見る →", href: "devices/f100.html", style: "primary" }
+  ]
+};
+*/
 
 /* トップの「最新のデバイス」に出すデバイス(slug。この順に並びます)。入れ替えはここだけ */
 var LATEST_DEVICES = ["p100", "d100"];

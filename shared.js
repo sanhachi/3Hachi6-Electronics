@@ -78,25 +78,36 @@
       </nav>`;
   }
 
-  /* ----- トップの大きな見出し(FEATURED のデバイス) ----- */
+  /* ----- トップの大きな見出し(FEATURED) ----- */
   var hero = byId('featured');
-  var featured = hero && findDevice(FEATURED);
-  if (featured) {
+  if (hero && typeof FEATURED === 'object' && FEATURED) {
+    // サイト内リンクは root を付ける。外部(http)や #アンカーはそのまま
+    function featuredHref(h) {
+      return /^(https?:|mailto:|#)/.test(h) ? h : root + h;
+    }
+    var heroNameHTML = (FEATURED.name || FEATURED.badge)
+      ? `<p class="hero-name">
+          ${FEATURED.name ? `<span class="font-display">${esc(FEATURED.name)}</span>` : ''}
+          ${FEATURED.badge ? `<span class="status-badge">${esc(FEATURED.badge)}</span>` : ''}
+        </p>`
+      : '';
+    var heroButtons = (FEATURED.buttons || []).map(function (b) {
+      var cls = b.style === 'ghost' ? 'btn-ghost' : 'btn-primary';
+      var ext = /^https?:/.test(b.href) ? ' target="_blank" rel="noopener"' : '';
+      return `<a href="${esc(featuredHref(b.href))}" class="btn ${cls}"${ext}>${esc(b.text)}</a>`;
+    }).join('\n          ');
+
     hero.innerHTML = `
       <div class="container-md">
-        <p class="hero-label"><span aria-hidden="true"></span>FEATURED PROJECT<span aria-hidden="true"></span></p>
-        <h1 id="hero-title">${esc(featured.tagline)}</h1>
-        <p class="hero-name">
-          <span class="font-display">${esc(featured.name)}</span>
-          <span class="status-badge">${esc(featured.status)}</span>
-        </p>
+        <p class="hero-label"><span aria-hidden="true"></span>${esc(FEATURED.label || 'FEATURED')}<span aria-hidden="true"></span></p>
+        <h1 id="hero-title">${esc(FEATURED.title)}</h1>
+        ${heroNameHTML}
         <div class="hero-buttons">
-          <a href="${devHref(featured.slug)}" class="btn btn-primary">仕様を見る →</a>
-          <a href="#devices" class="btn btn-ghost">ほかのデバイス</a>
+          ${heroButtons}
         </div>
       </div>
       <div class="hero-image">
-        <img src="${root + esc(featured.image)}" alt="${esc(featured.alt)}">
+        <img src="${root + esc(FEATURED.image)}" alt="${esc(FEATURED.alt)}">
       </div>
       <div class="hero-bar" aria-hidden="true"></div>`;
   }
