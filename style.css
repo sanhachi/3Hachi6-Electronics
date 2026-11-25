@@ -491,12 +491,15 @@ img { display: block; max-width: 100%; }
 }
 .work-grid .work-card.has-image { width: auto; }   /* 一覧ページは、グリッドの幅に従う */
 
+/* ---------- 画像つき作品カード(めくると文章が見える) ---------- */
+/* 大きさは普通のカードと同じ(幅18rem、高さは文章に合わせる) */
+.work-card.has-image { position: relative; overflow: hidden; }
+
 .work-cover {
   position: absolute;
   inset: 0;
   z-index: 2;
-  background: var(--brand-soft);          /* contain のときの余白の色 */
-  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  background: var(--brand-soft);
   transform-origin: left center;
   backface-visibility: hidden;
   box-shadow: 0 0 0 rgba(0, 0, 0, 0);
@@ -507,7 +510,8 @@ img { display: block; max-width: 100%; }
 .work-cover img {
   width: 100%;
   height: 100%;
-  object-fit: contain;                    /* 切らずに全体を見せる */
+  object-fit: cover;          /* 枠を埋めて、はみ出した分は切る */
+  object-position: center;    /* 見せたい位置があれば center top などに */
 }
 /* 右下の「めくれそう」な角 */
 .work-cover::after {
