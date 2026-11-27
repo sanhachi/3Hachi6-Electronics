@@ -208,7 +208,7 @@ var FEATURED = {
   image: "images/featured/f100.jpg",     // トップ専用の画像
   alt: "EX-F0 L2のイメージ画像",              // 画像の説明文
   buttons: [
-    { text: "仕様を見る →",     href: "devices/f100.html", style: "primary" },
+    { text: "仕様を見る →",     href: "devices/ex-f0l2.html", style: "primary" },
     { text: "ほかのデバイス",   href: "#devices",          style: "ghost" }
   ]
 };
