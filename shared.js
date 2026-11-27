@@ -194,7 +194,7 @@
   var contact = byId('contact');
   if (contact) {
     var githubButton = SITE.showGithubButton
-      ? `<a href="${SITE.github}" class="btn btn-ghost-ink btn-lg">GitHubでソースを見る ›</a>`
+      ? `<a href="${SITE.x}" class="btn btn-ghost-ink btn-lg">Xアカウントを見る ›</a>`
       : '';
     contact.innerHTML = `
       <div class="container-sm">
