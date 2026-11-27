@@ -37,7 +37,7 @@ var SITE = {
      既存のページ(例 p100.html)をコピーして、中の data-device="..." を新しい slug に変える。
    ・並びは、ここに書いた順(デバイス一覧・フッター・前へ/次へ が、この順になります)。 */
 var DEVICES = [
-  {
+  /*{
     slug: "f100",                 // ファイル名(devices/f100.html)と同じにする
     name: "F100",
     category: "音楽プレーヤー",
@@ -60,6 +60,32 @@ var DEVICES = [
       { label: "ディスプレイ", value: "なし" },
       { label: "入力方式", value: "5ディレクションスイッチ" },
       { label: "電源", value: "充電式バッテリー 500mAh前後" },
+      { label: "接続方式", value: "TFカード" }
+    ]
+  },*/
+  {
+    slug: "ex-f0l2",                 // ファイル名(devices/f100.html)と同じにする
+    name: "EX-F0 L2",
+    category: "音楽プレーヤー",
+    tagline: "LESS TO SEE, MORE TO HEAR.",
+    status: "開発中",
+    date: '2026.12',                      // 作った年月(例 '2026.11')。空なら表示されない
+    theme: "light",               // タイルの配色: 'light'(明るい) / 'dark'(暗い)
+    image: "images/f100.jpg",
+    alt: "黒い布の上に置かれた、白いケーブルの3.5mmイヤホンプラグ",
+    summary: "画面を見る時間を減らし、音楽を聴く時間を増やすための音楽プレーヤー。",   // タイルに出る短い説明
+    overview: "画面を見る時間を減らし、音楽を聴く時間を増やすための音楽プレーヤー。",   // 詳細ページに出る概要
+    highlights: [
+      { title: "表示部分の省略", body: "耳で聞く。目を閉じる。" },
+      { title: "懐かしみのあるデザイン", body: "カセットプレーヤーを模した筐体のデザイン。" },
+      { title: "音に集中", body: "通知もアプリもない、音楽のためだけの道具。" }
+    ],
+    specs: [
+      { label: "種別", value: "音楽プレーヤー" },
+      { label: "プロセッサ", value: "DFPlayer Mini" },
+      { label: "ディスプレイ", value: "なし" },
+      { label: "入力方式", value: "タクトスイッチ" },
+      { label: "電源", value: "単四型電池" },
       { label: "接続方式", value: "TFカード" }
     ]
   },
@@ -177,10 +203,10 @@ var DEVICES = [
 var FEATURED = {
   label: "FEATURED PROJECT",             // 上の小さな英字ラベル(例:FEATURED SOFTWARE)
   title: "LESS TO SEE, MORE TO HEAR.",   // 大きな見出し
-  name: "F100",                          // 名前(空にすると非表示)
+  name: "EX-F0 L2",                          // 名前(空にすると非表示)
   badge: "開発中",                        // 名前の横のバッジ(空にすると非表示)
   image: "images/featured/f100.jpg",     // トップ専用の画像
-  alt: "F100のイメージ画像",              // 画像の説明文
+  alt: "EX-F0 L2のイメージ画像",              // 画像の説明文
   buttons: [
     { text: "仕様を見る →",     href: "devices/f100.html", style: "primary" },
     { text: "ほかのデバイス",   href: "#devices",          style: "ghost" }
