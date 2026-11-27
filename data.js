@@ -39,7 +39,7 @@ var SITE = {
 var DEVICES = [
   {
     slug: "f100",                 // ファイル名(devices/f100.html)と同じにする
-    name: "F100(EX-F0L2)",
+    name: "F100 (EX-F0L2)",
     category: "音楽プレーヤー",
     tagline: "LESS TO SEE, MORE TO HEAR.",
     status: "開発中",
