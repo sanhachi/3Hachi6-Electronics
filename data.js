@@ -11,7 +11,7 @@
 var SITE = {
   siteName: "3Hachi6 Electronics",            // タブの題名などに使う名前
 
-  email: "sanhachi_x86@icloud.com",         // メールアドレス
+  email: "sanhachi6elec@icloud.com",         // メールアドレス
   github: "https://github.com/sanhachi/3Hachi6-Electronics",
   x: "https://x.com/386electronics",
 
@@ -19,9 +19,9 @@ var SITE = {
   showContactLinkInFooter: true,   // フッター「つながる」に「お問い合わせ」を出すか
 
   // お問い合わせブロック(改行は <br>)
-  // お問い合わせブロック(改行は <br>)
-  contactCatch: "「こんなの欲しい」を、<br>受注・制作します。",
-  contactText: "友人・学生仲間からの制作相談はもちろん、サポートなし（現状渡し）の条件にご納得いただける方であれば外部からの制作依頼も受注します。まずはXのDMやメールでお気軽にご相談ください。",
+  contactCatch: "ほしいデバイス、<br>受注・制作します。",
+  contactText: "「こんなデバイスがほしい」という制作依頼を受注しています。一部の試作機はBOOTHでも頒布予定です。※個人による趣味の制作物（現状渡し・アフターサポートなし）となる点にご了承いただける方のみお受けしています。",
+
 
 
 
